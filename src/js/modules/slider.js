@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 export default class Slider {
-	constructor(page, btns, control) {
+	constructor(page, btns) {
 		this.page = document.querySelector(page);
 		this.slides = this.page.children;
 		this.btns = document.querySelectorAll(btns);
@@ -15,6 +15,20 @@ export default class Slider {
 		if (n < 1) {
 			this.slideIndex = this.slides.length;
 		}
+	
+		try {
+			this.hanson.style.opacity = '0';
+
+			if (n ===3) {
+				this.hanson.classList.add('animated');
+				setTimeout(() => {
+					this.hanson.style.opacity = '1';
+					this.hanson.classList.add('bounceInUp');
+				}, 3000);
+			} else {
+				this.hanson.classList.remove('bounceInUp');
+			}
+		} catch(e) {}
 
 		for (let i = 0; i < this.slides.length; i++) {
 			this.slides[i].style.display = 'none';
@@ -29,6 +43,10 @@ export default class Slider {
 	}
 
 	render() {
+		try {
+			this.hanson = document.querySelector('.hanson');
+		} catch(e) {}
+
 		this.btns.forEach(btn => {
 			btn.addEventListener('click', (e) => {
 				e.preventDefault();
