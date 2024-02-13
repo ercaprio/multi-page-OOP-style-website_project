@@ -19,7 +19,7 @@ export default class Slider {
 		try {
 			this.hanson.style.opacity = '0';
 
-			if (n ===3) {
+			if (n === 3) {
 				this.hanson.classList.add('animated');
 				setTimeout(() => {
 					this.hanson.style.opacity = '1';
